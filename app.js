@@ -13,6 +13,7 @@ const main = async () => {
 
   if (tareasDB) {
     // Establecer las tareas
+    tareas.cargarTareasFromArray(tareasDB);
   }
 
   do {
@@ -30,7 +31,7 @@ const main = async () => {
         break;
     }
 
-    // guardarDB(tareas.listadoArr);
+    guardarDB(tareas.listadoArr);
 
     await pausa();
   } while (opt !== '0');
