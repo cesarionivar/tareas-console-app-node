@@ -30,14 +30,34 @@ class Tareas {
   }
 
   listadoCompleto() {
+    this.recorrerArr(this.listadoArr);
+  }
+
+  recorrerArr(tareas) {
     console.log();
-    this.listadoArr.forEach((tarea, i) => {
+    tareas.forEach((tarea, i) => {
       const idx = `${i + 1}`.green;
       const { desc, completadoEn } = tarea;
       const estado = completadoEn ? 'Completada'.green : 'Pendiente'.red;
 
       console.log(`${idx}. ${desc} :: ${estado}`);
     });
+  }
+
+  listarPendienteCompletadas(completadas = true) {
+    if (completadas) {
+      const completadasArr = this.listadoArr.filter(
+        (tarea) => tarea.completadoEn !== null
+      );
+
+      this.recorrerArr(completadasArr);
+    } else {
+      const pendientesArr = this.listadoArr.filter(
+        (tarea) => tarea.completadoEn === null
+      );
+
+      this.recorrerArr(pendientesArr);
+    }
   }
 }
 
